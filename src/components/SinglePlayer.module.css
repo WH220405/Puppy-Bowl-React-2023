@@ -1,0 +1,18 @@
+.single-container{
+    display: flex;
+    flex-flow: row wrap;
+    width: 70%;
+    justify-content: space-around;
+    background-color: beige;
+    padding: 2em;
+    margin: 2em auto;
+    border-radius: 3em;
+
+}
+.img{
+    height: 35em;
+    width: 35em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

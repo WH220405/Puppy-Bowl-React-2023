@@ -1,0 +1,40 @@
+.form {
+    background-color: rosybrown;
+    margin-right: 0;
+    width: 100%;
+    -webkit-box-shadow: 0 -10px 6px -6px #363636b0;
+    -moz-box-shadow: 0 -10px 6px -6px #363636b0;
+    box-shadow: 0 -10px 6px -6px #363636b0;
+    padding: 1em 0 5em 0;
+    color: back solid 1em;
+    
+}
+.input-group{
+    padding: 5rem;
+    width: 150px;
+    height: auto;
+    border-radius: 10%;
+}
+
+/* body{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC6FM_OM2-tJ4cBc4SX1PnmAM7H_yNU7wQ7n2zRGUOmR9UY7FSrAreEdrrBM8bCJ5M7B0&usqp=CAU');
+} */
+
+.input {
+    width: 500px;
+    height: 40px;
+    margin: 10px;
+    
+}
+
+.label{
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-size: large;
+}
+
+.button{
+    margin: 8px;
+    display: -moz-grid-group;
+    border-radius: 10%;
+  
+}

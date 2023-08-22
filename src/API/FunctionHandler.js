@@ -19,7 +19,7 @@ getAllPlayers();
 
 export async function getSinglePlayer(playerId) {
   try {
-    const response = await fetch(`${APIURL_PLAYERS} ${playerId}`);
+    const response = await fetch(`${APIURL_PLAYERS}/${playerId}`);
     const result = await response.json();
     return result.data.player;
   } catch (error) {

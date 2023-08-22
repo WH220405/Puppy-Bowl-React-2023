@@ -1,18 +1,36 @@
+.container{
+    background-color: blanchedalmond;
+}
+
 .single-container{
-    display: flex;
-    flex-flow: row wrap;
-    width: 70%;
-    justify-content: space-around;
-    background-color: beige;
-    padding: 2em;
-    margin: 2em auto;
-    border-radius: 3em;
+        display: flex;
+        flex-direction: column;
+        padding: 2.5em;
+        border-radius: 5%;
+        background-color:burlywood;
+        margin-top: 5px;
+        margin: 10em;
+        justify-content: flex-start;
+        align-items: flex-start;
+        background-image: url("../assets/background1.jpg");
+    
+}
+
+.puppy-data{
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:small;
 
 }
 .img{
-    height: 35em;
-    width: 35em;
+    height: 30em;
+    width: 30em;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+.button {
+  text-align: center;
+  justify-content: space-around;
+}
+

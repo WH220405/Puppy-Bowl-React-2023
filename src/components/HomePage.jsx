@@ -13,7 +13,7 @@ function HomePage(){
         <h1>Puppy Bowl React</h1>
       </header>
       <div className={classes['main-image']}>
-        <img src={PuppyBowlBackground}  alt="A puppy bowl background image"/>
+        <img  src={PuppyBowlBackground}  alt="A puppy bowl background image"/>
       </div>
     </> 
     )

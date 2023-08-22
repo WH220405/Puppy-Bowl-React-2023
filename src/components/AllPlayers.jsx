@@ -4,16 +4,18 @@ import { useNavigate } from "react-router-dom";
 import classes from './Allplayers.module.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import {InputGroup, FormControl } from "react-bootstrap";
+import { render } from 'react-dom';
 
 
 
-
- const AllPlayers = (props) => {
+ const AllPlayers = () => {
     const [players, setPlayers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [searchValue, setSearchValue] = useState('');
-    const [searchResult, setSearchResult] = useState(null);
-    const [toggle, setToggle] = useState(false)
+    const [searchResult, setSearchResult] = useState();
+    const [searchBar, setSearchBar] = useState('');
+    
 
     const navigate = useNavigate();
 
@@ -42,48 +44,31 @@ import Button from 'react-bootstrap/Button';
       navigate(`/players/${playerId}`);
     };
 
-
-
-       const deleteHandler = async () => {
-       const response = await deletePlayer(players);
-       const data = await response.json();
-       return data.target.value
+       const deleteHandler = async (id) => {
+       const response = await deletePlayer(id);//deleting from the database
+       const notDeleted = players.filter(item => item.id !== id); //deleting it from state
+      // console.log(notDeleted)
+       setPlayers(notDeleted)
      }
-
-      
-
-       function searchBar (e){
+       console.log(searchValue)
+ 
+      function searchBarr(e){
         e.preventDefault();
-        const result = players.filter(item => item.name.toLowerCase().includes(searchValue));
-        setSearchResult(result[0])
-        setToggle(true)
-       }
-
+        const result = players.filter(item=>item.name.toLowerCase().includes(searchBar));
+        setSearchBar(rendersult[0])
+      }
+      
     return ( 
     <div className={classes.allplayers} >
-     
-        <h1 className={classes.playerName}>All Players</h1>
-        
-       <form className={classes['search-container']}  onSubmit={searchBar}>
-        <label className={classes['label-search']}>Search</label>
-        <input className={classes.input} type="text" id="search" onChange={e=>setSearchValue(e.target.value)}/>
-        <Button className={classes['btn-search']} onClick={setSearchResult} as="input" type="submit" value="Submit" />{' '}
-       </form>  
-
-       <div>
-        {toggle ?
-        <div>
-          <p>{searchResult.name} is your result</p>
-        <img src={searchResult.imageUrl} />
-        </div>
-         :''} 
-       {toggle ? <button onClick={()=>setToggle(!toggle)}>View all dogs</button> : 
-       <button onClick={()=>setToggle(!toggle)}>View Search Results</button>}
-       </div>
-       
-      {!toggle ?  
-
-         players.map((player)=>(
+           <InputGroup className="mb-3">
+                <FormControl
+                    placeholder="Search"
+                    value={searchBar}
+                    onChange={(e) => setSearchBar(e.target.value)}
+                />
+                <Button variant="outline-success">Search</Button>
+            </InputGroup>
+       {players.map((player)=>(
           <Card className={classes.container}>
             <Card.Body className={classes.body}>
                  <Card.Text className={classes.text}>
@@ -94,12 +79,13 @@ import Button from 'react-bootstrap/Button';
                   
                 </Card.Text>
                  <Button onClick={()=>clickHandler(player.id)} variant="outline-success">View Puppy</Button>{' '}              
-               <Button onClick={deleteHandler} variant="outline-danger">Delete Puppy</Button>{' '}
+               <Button onClick={()=>deleteHandler(player.id)} variant="outline-danger">Delete Puppy</Button>{' '}
          </Card.Body>
         </Card>          
-         )) : '' }
+         ))}
     </div>
     );
 };
 
 export default AllPlayers;
+

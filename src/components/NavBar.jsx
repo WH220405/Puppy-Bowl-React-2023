@@ -6,11 +6,23 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 //import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import { useState } from 'react';
+import classes from './NavBar.module.css';
 
 function NavBar() {
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = (event)=>{
+    const from = event.currentTarget;
+    if(Form.checkvalidity()===false){
+      event.preventDefalt();
+      event.stopPropagation();
+    }
+    setValidated(true);
+  };
+
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className={classes.container}>
       <Container fluid>
         <Navbar.Brand href="#">Puppy Game</Navbar.Brand>
         <Navbar.Toggle aria-controls="homepage" />
@@ -24,7 +36,9 @@ function NavBar() {
             <Nav.Link href="/allplayers">All Players</Nav.Link>
             <Nav.Link href="/newplayers">Add New Player</Nav.Link>
           </Nav>
-          <Form className="d-flex">
+          <Form noValidate validated={validated} 
+          onSubmit={handleSubmit}
+          className="d-flex">
             <Form.Control
               type="search"
               placeholder="Search"

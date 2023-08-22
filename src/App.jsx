@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 //import reactLogo from './assets/react.svg'
 import {Routes, Route} from 'react-router-dom';
 import NavBar from './components/NavBar'
@@ -10,13 +10,14 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  const [foundPlayer, setFoundPlayer] = useState('')
   return (
     <>
-    <NavBar />
+    <NavBar setFoundPlayer={setFoundPlayer}/>
     <Routes>
       <Route path='/' element={<HomePage />}></Route>
       <Route path='/allplayers' element={<AllPlayers />}></Route>
-      <Route path='/player/:id' element={<SinglePlayer />}></Route>
+      <Route path='/players/:id' element={<SinglePlayer />}></Route>
       <Route path='/newplayers' element={<NewPlayerForm />}></Route>
     </Routes>
       

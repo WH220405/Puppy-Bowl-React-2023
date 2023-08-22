@@ -45,4 +45,9 @@
 
 .allplayers{
  background-color: blanchedalmond;
+ display: flex;
+ flex-wrap: wrap;
+}
+body {
+    background-color: cornflowerblue;
 }

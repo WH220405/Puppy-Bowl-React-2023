@@ -25,9 +25,9 @@ const  NewPlayerForm = () => {
           postPuppy()
          },[]);
 
-             if (response.ok) {
+    
             navigate('/allplayers')
-        }
+      
          
 
         const resetHandler =()=>{

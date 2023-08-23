@@ -1,78 +1,76 @@
-import { useState } from 'react';
+import {  useState, useEffect } from 'react';
 import { postPlayer } from '../API/FunctionHandler.js';
 import classes from './NewPlayerForm.module.css';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 
-const  NewPlayerForm = () => {
+const  NewPlayerForm = () => {  
     const [puppyName, setPuppyName] = useState("");
     const [puppyBreed, setPuppyBreed] = useState("");
     const [playerStatus, setPlayerStatus] = useState("bench");
     const [imageUrl, setImageUel] = useState("");
-    
-   
-    function onPuppyNameChanged(e){
-        setPuppyName(e.target.value)
-    }
-    function onPuppyBreedChanged(e){
-        setPuppyBreed(e.target.value)
-    }
-    function onPuppyStatusChanged(e){
-        setPlayerStatus(e.target.value)
-    }
-    function onPuppyImageUrlChanged(e){
-        setImageUel(e.target.value)
+
+    const navigate = useNavigate();
+
+      function submitHandler(event){
+      event.preventDefault();
+      console.log(puppyName,puppyBreed,playerStatus,imageUrl );
     }
 
-    function submitHandler (event) {
-        event.preventDefault();
-       if(
-        puppyName != "" && 
-        puppyBreed != "" && 
-        playerStatus !="" && 
-        imageUrl!= "" && 
-        teamId != "") 
-        { 
-       }
-       const newPuppy = {
-        name: puppyName,
-        breed: puppyBreed,
-        //status: playerStatus,
-        imageUrl: imageUrl,
-        teamId: teamId
-       }
-        postPlayer(newPuppy);
-      }
+         useEffect(()=> {
+          async function postPuppy(){
+            await postPlayer(player);
+          }
+          postPuppy()
+         },[]);
 
-    const resetHandler =()=>{
+             if (response.ok) {
+            navigate('/allplayers')
+        }
+         
+
+        const resetHandler =()=>{
         setPuppyName('');
         setPuppyBreed('');
 
 // we can dynamically update this state object whenever the inputChangeHandler is executed
-    }
+        };
+
     return (
         
        <form onSubmit={submitHandler} className={classes.form} >
         <div className={classes['input-group']}>
             
                 <label className={classes.label} htmlFor="name">NAME:</label>
-                <input className={classes.input} onChange={onPuppyNameChanged}
+                <input className={classes.input} 
               type="text" 
-              id="name" /><br />
+              id="name" 
+              value={puppyName}
+              onChange={(e)=> setPuppyName(e.target.value)}
+              /><br />
+
                    <label className={classes.label} htmlFor="breed">BREED:</label>
-                <input className={classes.input} onChange={onPuppyBreedChanged}
+                <input className={classes.input} 
               type="text" 
-              id="breed" /><br />
+              id="breed"
+              value={puppyBreed}
+              onChange={(e)=> setPuppyBreed(e.target.value)}
+              /><br />
+
                      <label className={classes.label} htmlFor="url">ImageUrl:</label>
-                <input className={classes.input} onChange={onPuppyImageUrlChanged}
+                <input className={classes.input} 
               type="text" 
-              id="url" /><br />
+              id="url" 
+              value={imageUrl}
+              onChange={(e)=> setImageUel(e.target.value)}
+              /> <br />
 
             <label className={classes.label}>
           Status:
           <select className={classes.label}
             value={playerStatus}
-            onChange={onPuppyStatusChanged}
+            onChange={(e)=>setPlayerStatus(e.target.value) }
           >
             <option value="bench">Bench</option>
             <option value="field">Field</option>
@@ -80,10 +78,8 @@ const  NewPlayerForm = () => {
         </label> 
         </div>
         <p className={classes.buttons}>
-
             <Button className={classes.button} variant="outline-warning" onClick={resetHandler} type="reset">Reset</Button>{' '}
             <Button className={classes.button} variant="outline-success">Add Player</Button>{' '}
-
         </p>
        </form>
     );

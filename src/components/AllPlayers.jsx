@@ -5,7 +5,7 @@ import classes from './Allplayers.module.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import {InputGroup, FormControl } from "react-bootstrap";
-import { render } from 'react-dom';
+
 
 
 

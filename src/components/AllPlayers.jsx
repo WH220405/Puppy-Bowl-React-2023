@@ -1,7 +1,7 @@
 import { getAllPlayers, deletePlayer} from '../API/FunctionHandler.js'
 import {useState, useEffect} from 'react'
 import { useNavigate } from "react-router-dom";
-import classes from './Allplayers.module.css';
+import classes from './AllPlayers.module.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import {InputGroup, FormControl } from "react-bootstrap";

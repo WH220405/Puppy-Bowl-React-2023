@@ -18,16 +18,26 @@ const  NewPlayerForm = () => {
       console.log(puppyName,puppyBreed,playerStatus,imageUrl );
     }
 
-         useEffect(()=> {
-          async function postPuppy(){
-            await postPlayer(player);
-          }
-          postPuppy()
-         },[]);
-
+        //  useEffect(()=> {
+        //   async function postPuppy(){
+        //     await postPlayer();
+        //   }
+        //   postPuppy()
+        //  },[]);
+        const player = {
+          name: puppyName,
+          breed: puppyBreed,
+          imageUrl: imageUrl,
+          status: playerStatus
+        }
+         
     
-            navigate('/allplayers')
-      
+        function submitHandler(e) {
+          e.preventDefault();
+          postPlayer(player) //player variables is an object with the staste as the values
+          navigate('/allplayers')
+        }
+      console.log(player)
          
 
         const resetHandler =()=>{
@@ -79,8 +89,8 @@ const  NewPlayerForm = () => {
         </div>
         <p className={classes.buttons}>
             <Button className={classes.button} variant="outline-warning" onClick={resetHandler} type="reset">Reset</Button>{' '}
-            <Button className={classes.button} variant="outline-success">Add Player</Button>{' '}
         </p>
+            <button className={classes.button} variant="outline-success">Add Player</button>{' '}
        </form>
     );
 };

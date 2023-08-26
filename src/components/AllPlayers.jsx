@@ -69,7 +69,7 @@ import {InputGroup, FormControl } from "react-bootstrap";
                 <Button variant="outline-success">Search</Button>
             </InputGroup>
        {players.map((player)=>(
-          <Card className={classes.container}>
+          <Card key={player.id} className={classes.container}>
             <Card.Body className={classes.body}>
                  <Card.Text className={classes.text}>
                   <h1 className={classes.h1}>Name:{player.name}</h1>

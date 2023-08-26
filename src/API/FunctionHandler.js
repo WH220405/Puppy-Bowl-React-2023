@@ -26,7 +26,7 @@ export async function getSinglePlayer(playerId) {
     console.log(error);
   }
 }
-
+//variable for the function name
 export async function postPlayer(player) {
   try {
     const response = await fetch(APIURL_PLAYERS, {

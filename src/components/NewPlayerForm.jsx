@@ -1,6 +1,6 @@
 import {  useState, useEffect } from 'react';
 import { postPlayer } from '../API/FunctionHandler.js';
-import classes from './NewPlayerForm.module.css';
+import classes from './NewplayerForm.module.css';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 

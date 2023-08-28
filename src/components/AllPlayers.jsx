@@ -14,7 +14,7 @@ import {InputGroup, FormControl } from "react-bootstrap";
     const [isLoading, setIsLoading] = useState(true);
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState();
-    const [searchBar, setSearchBar] = useState('');
+   
     
 
     const navigate = useNavigate();
@@ -52,21 +52,22 @@ import {InputGroup, FormControl } from "react-bootstrap";
      }
        console.log(searchValue)
  
-      function searchBarr(e){
+      function searchBars(e){
         e.preventDefault();
-        const result = players.filter(item=>item.name.toLowerCase().includes(searchBar));
-        setSearchBar(rendersult[0])
+        const result = players.filter(item=>
+          item.name.toLowerCase().includes(searchValue.toLowerCase()));
+        setSearchValue(result)
       }
       
     return ( 
     <div className={classes.allplayers} >
            <InputGroup className="mb-3">
-                <FormControl
+                <FormControl onSubmit={searchBars}
                     placeholder="Search"
-                    value={searchBar}
-                    onChange={(e) => setSearchBar(e.target.value)}
+                    value={searchValue}
+                    onChange={(e)=>setSearchResult(e.target.value)}
                 />
-                <Button variant="outline-success">Search</Button>
+                <Button variant="outline-success" type="submit">Search</Button>
             </InputGroup>
        {players.map((player)=>(
           <Card key={player.id} className={classes.container}>
@@ -88,4 +89,14 @@ import {InputGroup, FormControl } from "react-bootstrap";
 };
 
 export default AllPlayers;
+
+// {searchResult
+//   ? searchResult.map((player) => (
+//       // ... 
+//     ))
+//   : players.map((player) => (
+//       // ... 
+//     ))}
+//check whether searchResult is defined before rendering it. 
+//If it's not defined, you can render the original players array. 
 

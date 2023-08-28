@@ -10,10 +10,11 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [foundPlayer, setFoundPlayer] = useState('')
+  //const [foundPlayer, setFoundPlayer] = useState('')
   return (
     <>
-    <NavBar setFoundPlayer={setFoundPlayer}/>
+    {/* <NavBar setFoundPlayer={setFoundPlayer}/> */}
+    <NavBar/>
     <Routes>
       <Route path='/' element={<HomePage />}></Route>
       <Route path='/allplayers' element={<AllPlayers />}></Route>
